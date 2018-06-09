@@ -46,13 +46,13 @@ end
 Benchmark.bm do |benchmark|
   benchmark.report("2 loop") do
 	  50_000.times do
-	    sortByStrings1("weather","therapyw")
+	    sortByStrings1("weather","therapywgolzqp")
 	  end
   end
 
   benchmark.report("hash") do
     50_000.times do
-    	sortByStrings2("weather","therapyw")
+    	sortByStrings2("weather","therapywgolzqp")
   	end
   end
 end
