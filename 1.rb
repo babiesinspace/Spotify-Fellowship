@@ -15,24 +15,30 @@
 #   answer
 # end 
 
+
 def sortByStrings(s, t)
   str_to_sort = s.split("")
   sort_by_str = t.split("")
-  sort_by_str.each_index do |index|
-  
-      str_to_sort.map.with_index do |letter, i|
-        if str_to_sort[i] == sort_by_str[index]
-          temp = sort_by_str[index]
-          sort_by_str[index] = str_to_sort[i]
-          str_to_sort[i] = temp
-          break 
-        end
-        
-      end 
-    sort_by_str
-
-  end 
-end
+  answer = ""
+  repeated_chars = {}
+  #build a hash of characters needed to sort, and their freq
+  str_to_sort.each do |letter|
+    if repeated_chars.has_key?(letter)
+      repeated_chars[letter] += 1
+    else 
+      repeated_chars[letter] = 1
+    end 
+  end
+  #add them to the answer string as they occur in the rule string, repeating by their freq
+  sort_by_str.each do |letter|
+    if repeated_chars.has_key?(letter)
+      (repeated_chars[letter]).times do
+        answer += letter
+      end
+    end 
+  end
+  answer
+end 
 
 
 sortByStrings("good","odg") # "oodg"
