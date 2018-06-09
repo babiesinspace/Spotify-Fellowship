@@ -20,20 +20,19 @@ def sortByStrings(s, t)
   sort_by_str = t.split("")
   sort_by_str.each_index do |index|
   
-      str_to_sort.each_index do |i|
+      str_to_sort.map.with_index do |letter, i|
         if str_to_sort[i] == sort_by_str[index]
           temp = sort_by_str[index]
           sort_by_str[index] = str_to_sort[i]
           str_to_sort[i] = temp
           break 
         end
-        str_to_sort
+        
       end 
-    str_to_sort
+    sort_by_str
 
   end 
-  str_to_sort
-end 
+end
 
 
 sortByStrings("good","odg") # "oodg"
