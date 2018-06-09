@@ -15,20 +15,24 @@
 #   answer
 # end 
 
-def sortByStrings(str_to_sort, str) 
-  sorted_start = 0
-  for c in str_to_sort.split("")
-    i = sorted_start
-    while (i < str.length)
-      if str[i] == c
-        temp = str_to_sort[sorted_start]
-        str_to_sort[sorted_start] = str[i]
-        str[i] = temp 
-        sorted_start += 1
+def sortByStrings(s, t)
+  str_to_sort = s.split("")
+  sort_by_str = t.split("")
+  sort_by_str.each_index do |index|
+  
+      str_to_sort.each_index do |i|
+        if str_to_sort[i] == sort_by_str[index]
+          temp = sort_by_str[index]
+          sort_by_str[index] = str_to_sort[i]
+          str_to_sort[i] = temp
+          break 
+        end
+        str_to_sort
       end 
-    end
-  end
-  str 
+    str_to_sort
+
+  end 
+  str_to_sort
 end 
 
 
