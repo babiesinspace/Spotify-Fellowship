@@ -11,3 +11,10 @@ def decodeString(string)
 	end 
 	decoded
 end
+
+def decodeString(string)
+	return string if string.scan(/(\d)\[(.*)\]/).flatten.empty?
+  message = string.scan(/(\d)\[(.*)\]/).flatten
+  string = message.last * message.first.to_i
+  decodeString(string)
+end
