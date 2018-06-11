@@ -13,8 +13,14 @@ def decodeString(string)
 end
 
 def decodeString(string)
-	return string if string.scan(/(\d)\[(.*)\]/).flatten.empty?
-  message = string.scan(/(\d)\[(.*)\]/).flatten
-  string = message.last * message.first.to_i
-  decodeString(string)
+	return if string.scan(/(\w*)(\d)\[(\w*)\]/).empty?
+	message = string.scan(/(\w*)(\d)\[(\w*)\]/)
+	message.map do |arr|
+	code = arr.pop
+	count = arr.pop.to_i
+	arr.push(code * count)
+	end 
+	string = message.flatten.join("")
+	puts string.scan(/(\w*)(\d)\[(\w*)\]/).empty?
+	decodeString(string)
 end
