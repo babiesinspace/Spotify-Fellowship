@@ -1,26 +1,14 @@
-def scanString(string)
-	string.scan(/(\d)\[(.*)\]/).flatten
-end 
-
 def decodeString(string)
-	message = scanString(string)
-	decoded = ""
-	until message.empty?
-		decoded += message.last * message.first.to_i
-		message = scanString(decoded)
-	end 
-	decoded
+	message = string.gsub(/(\w*)(\d)\[(\w*)\]/) { |match| scanString(match) }
+ 	scanString(message).empty? ? message : scanString(message)
 end
 
-def decodeString(string)
-	return if string.scan(/(\w*)(\d)\[(\w*)\]/).empty?
-	message = string.scan(/(\w*)(\d)\[(\w*)\]/)
-	message.map do |arr|
-	code = arr.pop
-	count = arr.pop.to_i
-	arr.push(code * count)
-	end 
-	string = message.flatten.join("")
-	puts string.scan(/(\w*)(\d)\[(\w*)\]/).empty?
-	decodeString(string)
+def scanString(match)
+    arr = match.scan(/(\w*)(\d)\[(\w*)\]/)
+    arr.map do |array|
+	    code = array.pop
+	    count = array.pop.to_i
+	    array.push(code * count)
+	 end 
+	 arr.flatten.join("")
 end
