@@ -8,11 +8,18 @@ def count(denominations, coins_to_use=(denominations.length - 1), amount)
   
 end
 
+#bottom up memoization
 def count(denominations, amount) 
 	#create array of 0s, with as many spots as the amount number
 	way_to_change = Array.new((amount+1), 0)
 	way_to_change[0] = 1
+	#create a sort of memoization table
 	denominations.each do |coin|
-		
+		#for each coin we have available, including one the same as total
+		(coin..amount).each do |i|
+			#add the number of ways you can make change including that coin, plus the number of ways excluding that coin (stops repeat work)
+			way_to_change[i] += way_to_change[i-coin]
+		end
 	end
+	way_to_change[amount]
 end
