@@ -7,3 +7,12 @@ def count(denominations, coins_to_use=(denominations.length - 1), amount)
   count(denominations, coins_to_use, (amount - denominations[coins_to_use])) + count(denominations, coins_to_use-1, amount)
   
 end
+
+def count(denominations, amount) 
+	#create array of 0s, with as many spots as the amount number
+	way_to_change = Array.new((amount+1), 0)
+	way_to_change[0] = 1
+	denominations.each do |coin|
+		
+	end
+end
