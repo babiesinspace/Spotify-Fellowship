@@ -62,7 +62,7 @@ export default class Calendar extends React.Component {
 		for (let i = 0; i < this.firstDayOfMonth(); i++) {
 			// create a blank day cell for each day belonging to previous month
 			blanks.push(
-				<td className="emptySlot">
+				<td key={i+13} className="emptySlot">
 					{""}
 				</td>
 			);
@@ -70,7 +70,7 @@ export default class Calendar extends React.Component {
 
 		
 		let daysInMonth = [];
-		for (let d = 1; d < this.daysInMonth(); d++) {
+		for (let d = 1; d <= this.daysInMonth(); d++) {
 			// add classes to each day. add current day class to today
 			let className = (d === this.currentDay ? "day current-day" : "day");
 			// as in blanks, create a cell for each day of the month and push to daysInMonth array
