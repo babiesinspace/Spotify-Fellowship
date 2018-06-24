@@ -1,5 +1,5 @@
 module Api::V1
-  class IdeasController < ApplicationController
+  class EventsController < ApplicationController
     def index
       @events = Event.all
       render json: @events
