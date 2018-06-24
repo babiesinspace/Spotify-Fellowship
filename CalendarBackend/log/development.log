@@ -169,3 +169,41 @@ Migrating to CreateEvents (20180624165200)
   ↳ bin/rails:9
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mEvent Create (17.1ms)[0m  [1m[32mINSERT INTO "events" ("title", "body", "start", "end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Physical Therapy"], ["body", "PT"], ["start", "10:00:00"], ["end", "11:00:00"], ["created_at", "2018-06-24 17:15:45.701285"], ["updated_at", "2018-06-24 17:15:45.701285"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "body", "start", "end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Vacay"], ["body", "Woodstock baby"], ["start", "05:00:00"], ["end", "11:00:00"], ["created_at", "2018-06-24 17:15:45.721046"], ["updated_at", "2018-06-24 17:15:45.721046"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "body", "start", "end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Interview"], ["body", "Phone"], ["start", "07:00:00"], ["end", "07:30:00"], ["created_at", "2018-06-24 17:15:45.723225"], ["updated_at", "2018-06-24 17:15:45.723225"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "body", "start", "end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Interview"], ["body", "Whiteboard"], ["start", "06:00:00"], ["end", "08:00:00"], ["created_at", "2018-06-24 17:15:45.725068"], ["updated_at", "2018-06-24 17:15:45.725068"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "body", "start", "end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Plumber"], ["body", "Confirm with Brian"], ["start", "06:00:00"], ["end", "08:00:00"], ["created_at", "2018-06-24 17:15:45.727128"], ["updated_at", "2018-06-24 17:15:45.727128"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "body", "start", "end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Spotify Challenge"], ["body", "Fingers crossed!"], ["start", "09:00:00"], ["end", "19:00:00"], ["created_at", "2018-06-24 17:15:45.728770"], ["updated_at", "2018-06-24 17:15:45.728770"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
