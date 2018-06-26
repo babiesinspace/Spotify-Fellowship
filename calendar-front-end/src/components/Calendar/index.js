@@ -49,6 +49,62 @@ export default class Calendar extends React.Component {
         return firstDay;
     }
 
+    // toggle the month selection list when you click the month
+    onChangeMonth = (e, month) => {
+    	this.setState({
+    		showMonthPopup: !this.state.showMonthPopup
+    	})
+    }
+
+
+    setMonth = (month) => {
+    	let monthNum = this.months.indexOf(month);
+    	// clone the dateContext object
+    	let dateContext = Object.assign({}, this.state.dateContext);
+    	// change the dateContext object to reflect new month
+    	dateContext = moment(dateContext).set("month", monthNum);
+    	// reassign the state to show new month context
+    	this.setState({
+    		dateContext: dateContext
+    	})
+    }
+
+    onSelectMonthChange = (e, data) => {
+    	this.setMonth(data);
+    	// if no property is being passed, the parent can take action
+    	this.props.onChangeMonth && this.props.onChangeMonth()
+    }
+
+    // create a link for each month, nestled inside a div
+    SelectMonth = (props) => {
+    	let popup = props.data.map((data) => {
+    		return (
+    			<div key={data}>
+    				<a href="#" onClick={(e) => this.onSelectMonthChange(e, data)}>
+    					{data}
+    				</a>
+    			</div>
+    		)
+    	})
+    	return (
+    		<div className="month-popup">
+    			{popup}
+    		</div>
+    	)
+    }
+
+    // add the event listener to the current month
+    MonthNav = () => {
+    	return (
+    		<span className="label-month" onClick={(e) => {this.onChangeMonth(e, this.month())}}>
+    			{this.month()}
+    			{this.state.showMonthPopup &&
+    				<this.SelectMonth data={this.months} />
+    			}
+    		</span>
+    	)
+    }
+
 	render() {
 		// grab the shortened weekdays array and iterate through, create a cell for each day of the week
 		let weekdays = this.weekdaysShort.map((day) => {
@@ -124,6 +180,9 @@ export default class Calendar extends React.Component {
 				<table className="calendar">
 					<thead>
 						<tr className="calendar-header">
+							<td colSpan="5">
+								<this.MonthNav />
+							</td>
 						</tr>
 					</thead>
 					<tbody>
