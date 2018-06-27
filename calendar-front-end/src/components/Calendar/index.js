@@ -1,11 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 import "font-awesome/css/font-awesome.css";
+import './calendar.css';
 
 export default class Calendar extends React.Component {
 	constructor(props) {
 		super(props);
-		this.width = props.width || "500px";
+		this.width = props.width || "350px";
 		this.style = props.style || {};
 	}
 
@@ -67,6 +68,24 @@ export default class Calendar extends React.Component {
     	this.setState({
     		dateContext: dateContext
     	})
+    }
+
+    nextMonth = () => {
+    	let dateContext = Object.assign({}, this.state.dateContext)
+    	dateContext = moment(dateContext).add(1, "month")
+    	this.setState({
+    		dateContext: dateContext
+    	})
+    	this.props.onNextMonth && this.props.onNextMonth()
+    }
+
+     prevMonth = () => {
+    	let dateContext = Object.assign({}, this.state.dateContext)
+    	dateContext = moment(dateContext).subtract(1, "month")
+    	this.setState({
+    		dateContext: dateContext
+    	})
+    	this.props.onPrevMonth && this.props.onPrevMonth()
     }
 
     onSelectMonthChange = (e, data) => {
@@ -147,6 +166,10 @@ export default class Calendar extends React.Component {
     	)
     }
 
+    onDayClick = (e, day) => {
+    	this.props.onDayClick && this.props.onDayClick(e, day)
+    }
+
 	render() {
 		// grab the shortened weekdays array and iterate through, create a cell for each day of the week
 		let weekdays = this.weekdaysShort.map((day) => {
@@ -174,7 +197,7 @@ export default class Calendar extends React.Component {
 			// as in blanks, create a cell for each day of the month and push to daysInMonth array
 			daysInMonth.push(
 				<td key={d} className={className} >
-					<span>{d}</span>
+					<span onClick={(e) => {this.onDayClick(e, d)}}>{d}</span>
 				</td>
 			)
 		}
@@ -213,12 +236,8 @@ export default class Calendar extends React.Component {
 			)
 		});
 
-		console.log("blanks: ", blanks)
-		console.log("days: ", daysInMonth)
-		console.log("totalCells: ", totalCells)
 		return (
 			<div className="calendar-container">
-				<h1>Calendar</h1>
 				<table className="calendar">
 					<thead>
 						<tr className="calendar-header">
@@ -226,6 +245,12 @@ export default class Calendar extends React.Component {
 								<this.MonthNav />
 								{" "}
 								<this.YearNav />
+							</td>
+							<td colSpan="2" className="nav-month">
+								<i className="prev fa fa-fw fa-chevron-left" onClick={(e) => {this.prevMonth()} } >
+								</i>
+								<i className="prev fa fa-fw fa-chevron-right" onClick={(e) => {this.nextMonth()} } >
+								</i>
 							</td>
 						</tr>
 					</thead>

@@ -4,10 +4,14 @@ import './App.css';
 import Calendar from './components/Calendar/';
 
 class App extends Component {
+  onDayClick = (e, day) => {
+    alert(day)
+  }
+
   render() {
     return (
       <div className="App">
-        <Calendar />
+        <Calendar onDayClick={(e, day) => this.onDayClick(e, day)}/>
       </div>
     );
   }
