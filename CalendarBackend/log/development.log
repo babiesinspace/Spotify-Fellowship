@@ -684,3 +684,19 @@ Migrating to CreateEvents (20180624165200)
   ↳ db/seeds.rb:9
   [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
   [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" ORDER BY "events"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/v1/events" for ::1 at 2018-06-27 13:27:35 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/alexandracooper/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::EventsController#index as HTML
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:5
+Completed 200 OK in 13ms (Views: 7.2ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/api/v1/events.json" for ::1 at 2018-06-27 13:27:51 -0400
+Processing by Api::V1::EventsController#index as JSON
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms)
+
+
