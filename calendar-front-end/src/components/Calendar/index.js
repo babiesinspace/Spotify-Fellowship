@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import axios from 'axios'
 import "font-awesome/css/font-awesome.css";
 import './calendar.css';
 
@@ -14,7 +15,17 @@ export default class Calendar extends React.Component {
 		dateContext: moment(),
 		today: moment(),
 		showMonthPopup: false,
-		showYearPopup: false
+		showYearPopup: false,
+		events: []
+	}
+
+	componentDidMount() {
+		axios.get('http://localhost:3001/api/v1/events.json')
+	  	.then(response => {
+	    	console.log(response)
+	    this.setState({events: response.data})
+	  })
+	 	.catch(error => console.log(error))
 	}
 
 	weekdays = moment.weekdays();
