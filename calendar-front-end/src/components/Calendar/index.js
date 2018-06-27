@@ -105,6 +105,48 @@ export default class Calendar extends React.Component {
     	)
     }
 
+    showYearEditor = () => {
+    	this.setState({
+    		showYearEditor: true
+    	})
+    }
+
+    setYear = (year) => {
+    	let dateContext = Object.assign({}, this.state.dateContext);
+    	 dateContext = moment(dateContext).set("year", year);
+    	// reassign the state to show new year context
+    	this.setState({
+    		dateContext: dateContext
+    	})
+    }
+
+    onYearChange = (e) => {
+    	this.setYear(e.target.value);
+    	this.props.onYearChange && this.props.onYearChange(e, e.target.value)
+    }
+
+    onKeyUpYear = (e) => {
+    	// if user hits 'enter' or 'esc'
+    	if (e.which === 13 || e.which === 27) {
+    		this.setYear(e.target.value)
+    		this.setState({
+    			showYearEditor: false
+    		})
+    	}
+    }
+
+    // display year next to month with event listener
+    YearNav = () => {
+    	return (
+    		this.state.showYearEditor ? 
+    		<input defaultValue={this.year()} className="editor-year" ref={(yearInput) => {this.yearInput = yearInput}} onKeyUp={(e) => this.onKeyUpYear(e)} onChange={(e) => this.onYearChange(e)} type="number" placeholder="year" />
+    		:
+    		<span className="label-year" onDoubleClick={(e) => {this.showYearEditor()}}>
+    			{this.year()}
+    		</span>
+    	)
+    }
+
 	render() {
 		// grab the shortened weekdays array and iterate through, create a cell for each day of the week
 		let weekdays = this.weekdaysShort.map((day) => {
@@ -182,6 +224,8 @@ export default class Calendar extends React.Component {
 						<tr className="calendar-header">
 							<td colSpan="5">
 								<this.MonthNav />
+								{" "}
+								<this.YearNav />
 							</td>
 						</tr>
 					</thead>
